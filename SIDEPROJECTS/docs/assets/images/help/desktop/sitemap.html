@@ -1,0 +1,2537 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    * { padding: 0; margin: 0; }
+    body {
+        font-family: sans-serif;
+        text-rendering: optimizespeed;
+        background-color: #ffffff;
+    }
+    a {
+        color: #006ed3;
+        text-decoration: none;
+    }
+    a:hover,
+    h1 a:hover {
+        color: #319cff;
+    }
+    header,
+    #summary {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    th:first-child,
+    td:first-child {
+        width: 5%;
+    }
+    th:last-child,
+    td:last-child {
+        width: 5%;
+    }
+    header {
+        padding-top: 25px;
+        padding-bottom: 15px;
+        background-color: #f2f2f2;
+    }
+    h1 {
+        font-size: 20px;
+        font-weight: normal;
+        white-space: nowrap;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+        color: #999;
+    }
+    h1 a {
+        color: #000;
+        margin: 0 4px;
+    }
+    h1 a:hover {
+        text-decoration: underline;
+    }
+    h1 a:first-child {
+        margin: 0;
+    }
+    main {
+        display: block;
+    }
+    .meta {
+        font-size: 12px;
+        font-family: Verdana, sans-serif;
+        border-bottom: 1px solid #9C9C9C;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .meta-item {
+        margin-right: 1em;
+    }
+    #filter {
+        padding: 4px;
+        border: 1px solid #CCC;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    tr {
+        border-bottom: 1px dashed #dadada;
+    }
+    tbody tr:hover {
+        background-color: #ffffec;
+    }
+    th,
+    td {
+        text-align: left;
+        padding: 10px 0;
+    }
+    th {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        font-size: 16px;
+        white-space: nowrap;
+    }
+    th a {
+        color: black;
+    }
+    th svg {
+        vertical-align: middle;
+    }
+    td {
+        white-space: nowrap;
+        font-size: 14px;
+    }
+    td:nth-child(2) {
+        width: 80%;
+    }
+    td:nth-child(3) {
+        padding: 0 20px 0 20px;
+    }
+    th:nth-child(4),
+    td:nth-child(4) {
+        text-align: right;
+    }
+    td:nth-child(2) svg {
+        position: absolute;
+    }
+    td .name {
+        margin-left: 1.75em;
+        word-break: break-all;
+        overflow-wrap: break-word;
+        white-space: pre-wrap;
+    }
+    td .goup {
+        margin-left: 1.75em;
+        padding: 0;
+        word-break: break-all;
+        overflow-wrap: break-word;
+        white-space: pre-wrap;
+    }
+    .icon {
+        margin-right: 5px;
+    }
+    tr.clickable { 
+        cursor: pointer; 
+    } 
+    tr.clickable a { 
+        display: block; 
+    } 
+    @media (max-width: 600px) {
+        * {
+            font-size: 1.06rem;
+        }
+        .hideable {
+            display: none;
+        }
+        td:nth-child(2) {
+            width: auto;
+        }
+        th:nth-child(3),
+        td:nth-child(3) {
+            padding-right: 5%;
+            text-align: right;
+        }
+        h1 {
+            color: #000;
+        }
+        h1 a {
+            margin: 0;
+        }
+        #filter {
+            max-width: 100px;
+        }
+    }
+    </style>
+</head>
+<body>
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="0" width="0" style="position: absolute;">
+    <defs>
+        <!-- Go-up -->
+        <g id="go-up">
+            <path d="M10,9V5L3,12L10,19V14.9C15,14.9 18.5,16.5 21,20C20,15 17,10 10,9Z" fill="#696969"/>
+        </g>
+        <!-- Folder -->
+        <g id="folder" fill-rule="nonzero" fill="none">
+            <path d="M285.22 37.55h-142.6L110.9 0H31.7C14.25 0 0 16.9 0 37.55v75.1h316.92V75.1c0-20.65-14.26-37.55-31.7-37.55z" fill="#FFA000"/>
+            <path d="M285.22 36H31.7C14.25 36 0 50.28 0 67.74v158.7c0 17.47 14.26 31.75 31.7 31.75H285.2c17.44 0 31.7-14.3 31.7-31.75V67.75c0-17.47-14.26-31.75-31.7-31.75z" fill="#FFCA28"/>
+        </g>
+        <g id="folder-shortcut" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="folder-shortcut-group" fill-rule="nonzero">
+                <g id="folder-shortcut-shape">
+                    <path d="M285.224876,37.5486902 L142.612438,37.5486902 L110.920785,0 L31.6916529,0 C14.2612438,0 0,16.8969106 0,37.5486902 L0,112.646071 L316.916529,112.646071 L316.916529,75.0973805 C316.916529,54.4456008 302.655285,37.5486902 285.224876,37.5486902 Z" id="Shape" fill="#FFA000"></path>
+                    <path d="M285.224876,36 L31.6916529,36 C14.2612438,36 0,50.2838568 0,67.7419039 L0,226.451424 C0,243.909471 14.2612438,258.193328 31.6916529,258.193328 L285.224876,258.193328 C302.655285,258.193328 316.916529,243.909471 316.916529,226.451424 L316.916529,67.7419039 C316.916529,50.2838568 302.655285,36 285.224876,36 Z" id="Shape" fill="#FFCA28"></path>
+                </g>
+                <path d="M126.154134,250.559184 C126.850974,251.883673 127.300549,253.006122 127.772602,254.106122 C128.469442,255.206122 128.919016,256.104082 129.638335,257.002041 C130.559962,258.326531 131.728855,259 133.100057,259 C134.493737,259 135.415364,258.55102 136.112204,257.67551 C136.809044,257.002041 137.258619,255.902041 137.258619,254.577551 C137.258619,253.904082 137.258619,252.804082 137.033832,251.457143 C136.786566,249.908163 136.561779,249.032653 136.561779,248.583673 C136.089726,242.814286 135.864939,237.920408 135.864939,233.273469 C135.864939,225.057143 136.786566,217.514286 138.180246,210.846939 C139.798713,204.202041 141.889234,198.634694 144.429328,193.763265 C147.216689,188.869388 150.678411,184.873469 154.836973,181.326531 C158.995535,177.779592 163.626149,174.883673 168.481552,172.661224 C173.336954,170.438776 179.113983,168.665306 185.587852,167.340816 C192.061722,166.218367 198.760378,165.342857 205.481514,164.669388 C212.18017,164.220408 219.598146,163.995918 228.162535,163.995918 L246.055591,163.995918 L246.055591,195.514286 C246.055591,197.736735 246.752431,199.510204 248.370899,201.059184 C250.214153,202.608163 252.079886,203.506122 254.372715,203.506122 C256.463236,203.506122 258.531277,202.608163 260.172223,201.059184 L326.102289,137.797959 C327.720757,136.24898 328.642384,134.47551 328.642384,132.253061 C328.642384,130.030612 327.720757,128.257143 326.102289,126.708163 L260.172223,63.4469388 C258.553756,61.8979592 256.463236,61 254.395194,61 C252.079886,61 250.236632,61.8979592 248.393377,63.4469388 C246.77491,64.9959184 246.07807,66.7693878 246.07807,68.9918367 L246.07807,100.510204 L228.162535,100.510204 C166.863084,100.510204 129.166282,117.167347 115.274437,150.459184 C110.666301,161.54898 108.350993,175.310204 108.350993,191.742857 C108.350993,205.279592 113.903236,223.912245 124.760454,247.438776 C125.00772,248.112245 125.457294,249.010204 126.154134,250.559184 Z" id="Shape" fill="#FFFFFF" transform="translate(218.496689, 160.000000) scale(-1, 1) translate(-218.496689, -160.000000) "></path>
+            </g>
+        </g>
+        <!-- File -->
+        <g id="file" stroke="#000" stroke-width="25" fill="#FFF" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M13 24.12v274.76c0 6.16 5.87 11.12 13.17 11.12H239c7.3 0 13.17-4.96 13.17-11.12V136.15S132.6 13 128.37 13H26.17C18.87 13 13 17.96 13 24.12z"/>
+            <path d="M129.37 13L129 113.9c0 10.58 7.26 19.1 16.27 19.1H249L129.37 13z"/>
+        </g>
+        <g id="file-shortcut" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="file-shortcut-group" transform="translate(13.000000, 13.000000)">
+                <g id="file-shortcut-shape" stroke="#000000" stroke-width="25" fill="#FFFFFF" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M0,11.1214886 L0,285.878477 C0,292.039924 5.87498876,296.999983 13.1728373,296.999983 L225.997983,296.999983 C233.295974,296.999983 239.17082,292.039942 239.17082,285.878477 L239.17082,123.145388 C239.17082,123.145388 119.58541,2.84217094e-14 115.369423,2.84217094e-14 L13.1728576,2.84217094e-14 C5.87500907,-1.71479982e-05 0,4.96022995 0,11.1214886 Z" id="rect1171"></path>
+                    <path d="M116.37005,0 L116,100.904964 C116,111.483663 123.258008,120 132.273377,120 L236,120 L116.37005,0 L116.37005,0 Z" id="rect1794"></path>
+                </g>
+                <path d="M47.803141,294.093878 C48.4999811,295.177551 48.9495553,296.095918 49.4216083,296.995918 C50.1184484,297.895918 50.5680227,298.630612 51.2873415,299.365306 C52.2089688,300.44898 53.3778619,301 54.7490634,301 C56.1427436,301 57.0643709,300.632653 57.761211,299.916327 C58.4580511,299.365306 58.9076254,298.465306 58.9076254,297.381633 C58.9076254,296.830612 58.9076254,295.930612 58.6828382,294.828571 C58.4355724,293.561224 58.2107852,292.844898 58.2107852,292.477551 C57.7387323,287.757143 57.5139451,283.753061 57.5139451,279.95102 C57.5139451,273.228571 58.4355724,267.057143 59.8292526,261.602041 C61.44772,256.165306 63.5382403,251.610204 66.0783349,247.62449 C68.8656954,243.620408 72.3274172,240.35102 76.4859792,237.44898 C80.6445412,234.546939 85.2751561,232.177551 90.1305582,230.359184 C94.9859603,228.540816 100.76299,227.089796 107.236859,226.006122 C113.710728,225.087755 120.409385,224.371429 127.13052,223.820408 C133.829177,223.453061 141.247152,223.269388 149.811542,223.269388 L167.704598,223.269388 L167.704598,249.057143 C167.704598,250.87551 168.401438,252.326531 170.019905,253.593878 C171.86316,254.861224 173.728893,255.595918 176.021722,255.595918 C178.112242,255.595918 180.180284,254.861224 181.82123,253.593878 L247.751296,201.834694 C249.369763,200.567347 250.291391,199.116327 250.291391,197.297959 C250.291391,195.479592 249.369763,194.028571 247.751296,192.761224 L181.82123,141.002041 C180.202763,139.734694 178.112242,139 176.044201,139 C173.728893,139 171.885639,139.734694 170.042384,141.002041 C168.423917,142.269388 167.727077,143.720408 167.727077,145.538776 L167.727077,171.326531 L149.811542,171.326531 C88.5120908,171.326531 50.8152886,184.955102 36.9234437,212.193878 C32.3153075,221.267347 30,232.526531 30,245.971429 C30,257.046939 35.5522422,272.291837 46.4094607,291.540816 C46.6567266,292.091837 47.1063009,292.826531 47.803141,294.093878 Z" id="Shape-Copy" fill="#000000" fill-rule="nonzero" transform="translate(140.145695, 220.000000) scale(-1, 1) translate(-140.145695, -220.000000) "></path>
+            </g>
+        </g>
+    </defs>
+    </svg>
+<header>
+    <h1>desktop</h1>
+                 </header>
+                 <main>
+                 <div class="listing">
+                     <table aria-describedby="summary">
+                         <thead>
+                         <tr>
+                             <th></th>
+                             <th>Name</th>
+                             <th>Size</th>
+                             <th class="hideable">
+                                 Modified
+                             </th>
+                             <th class="hideable"></th>
+                         </tr>
+                         </thead>
+                         <tbody>
+                         <tr class="clickable">
+                             <td></td>
+                             <td><a href=".."><svg width="1.5em" height="1em" version="1.1" viewBox="0 0 24 24"><use xlink:href="#go-up"></use></svg>
+                 <span class="goup">..</span></a></td>
+                             <td>&mdash;</td>
+                             <td class="hideable">&mdash;</td>
+                             <td class="hideable"></td>
+                         </tr>
+                 
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="getting-started-guide/">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#folder"></use></svg>
+                    <span class="name">getting-started-guide</span>
+                </a>
+            </td>
+            <td data-order="-1">&mdash;</td>
+            <td class="hideable"><time datetime="2021-10-25T14:15:15">Mon Oct 25 14:15:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="2fa-code-field.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">2fa-code-field.png</span>
+                </a>
+            </td>
+            <td data-order="13292">12 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="add-co-author-commit.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">add-co-author-commit.png</span>
+                </a>
+            </td>
+            <td data-order="67957">66 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="add-local-repository-mac.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">add-local-repository-mac.png</span>
+                </a>
+            </td>
+            <td data-order="18006">17 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="add-local-repository-windows.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">add-local-repository-windows.png</span>
+                </a>
+            </td>
+            <td data-order="11859">11 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="add-repo-choose-button-mac.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">add-repo-choose-button-mac.png</span>
+                </a>
+            </td>
+            <td data-order="7592">7 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="add-repo-choose-button-win.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">add-repo-choose-button-win.png</span>
+                </a>
+            </td>
+            <td data-order="6266">6 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="add-repository-button-mac.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">add-repository-button-mac.png</span>
+                </a>
+            </td>
+            <td data-order="7643">7 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="add-repository-button-windows.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">add-repository-button-windows.png</span>
+                </a>
+            </td>
+            <td data-order="6151">6 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="applications-folder.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">applications-folder.png</span>
+                </a>
+            </td>
+            <td data-order="59361">57 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="available-actions.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">available-actions.png</span>
+                </a>
+            </td>
+            <td data-order="63207">61 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="base-and-compare-branches.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">base-and-compare-branches.png</span>
+                </a>
+            </td>
+            <td data-order="37824">36 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="begin-rebase-button.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">begin-rebase-button.png</span>
+                </a>
+            </td>
+            <td data-order="45887">44 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="branch-drop-down-pull-request-tab.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">branch-drop-down-pull-request-tab.png</span>
+                </a>
+            </td>
+            <td data-order="61786">60 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="branch-history-commit.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">branch-history-commit.png</span>
+                </a>
+            </td>
+            <td data-order="78821">76 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="branch-history-file.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">branch-history-file.png</span>
+                </a>
+            </td>
+            <td data-order="70882">69 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="changes-and-history.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">changes-and-history.png</span>
+                </a>
+            </td>
+            <td data-order="14914">14 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="check-for-updates.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">check-for-updates.png</span>
+                </a>
+            </td>
+            <td data-order="12982">12 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="cherry-picking.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">cherry-picking.png</span>
+                </a>
+            </td>
+            <td data-order="42669">41 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="choose-repository-location-mac.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">choose-repository-location-mac.png</span>
+                </a>
+            </td>
+            <td data-order="11304">11 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="choose-repository-location-win.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">choose-repository-location-win.png</span>
+                </a>
+            </td>
+            <td data-order="6850">6 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="click-branch-in-drop-down-mac.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">click-branch-in-drop-down-mac.png</span>
+                </a>
+            </td>
+            <td data-order="68561">66 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="click-branch-in-drop-down-win.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">click-branch-in-drop-down-win.png</span>
+                </a>
+            </td>
+            <td data-order="58933">57 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="click-pull-request.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">click-pull-request.png</span>
+                </a>
+            </td>
+            <td data-order="53822">52 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="clone-a-repository-list-mac.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">clone-a-repository-list-mac.png</span>
+                </a>
+            </td>
+            <td data-order="46063">44 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="clone-a-repository-list-win.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">clone-a-repository-list-win.png</span>
+                </a>
+            </td>
+            <td data-order="25918">25 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="clone-button-mac.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">clone-button-mac.png</span>
+                </a>
+            </td>
+            <td data-order="45964">44 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="clone-button-url-mac.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">clone-button-url-mac.png</span>
+                </a>
+            </td>
+            <td data-order="61228">59 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="clone-button-url-win.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">clone-button-url-win.png</span>
+                </a>
+            </td>
+            <td data-order="61134">59 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="clone-button-win.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">clone-button-win.png</span>
+                </a>
+            </td>
+            <td data-order="25463">24 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="clone-choose-button-mac.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">clone-choose-button-mac.png</span>
+                </a>
+            </td>
+            <td data-order="45564">44 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="clone-choose-button-url-mac.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">clone-choose-button-url-mac.png</span>
+                </a>
+            </td>
+            <td data-order="60848">59 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="clone-choose-button-url-win.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">clone-choose-button-url-win.png</span>
+                </a>
+            </td>
+            <td data-order="61032">59 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="clone-choose-button-win.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">clone-choose-button-win.png</span>
+                </a>
+            </td>
+            <td data-order="25448">24 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="clone-file-menu-mac.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">clone-file-menu-mac.png</span>
+                </a>
+            </td>
+            <td data-order="17479">17 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="clone-file-menu-windows.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">clone-file-menu-windows.png</span>
+                </a>
+            </td>
+            <td data-order="12336">12 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="co-authors-demo-hq.gif">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">co-authors-demo-hq.gif</span>
+                </a>
+            </td>
+            <td data-order="1355315">1 MB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="commit-all.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">commit-all.png</span>
+                </a>
+            </td>
+            <td data-order="14827">14 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="commit-button.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">commit-button.png</span>
+                </a>
+            </td>
+            <td data-order="38172">37 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="commit-message.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">commit-message.png</span>
+                </a>
+            </td>
+            <td data-order="39302">38 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="commit-revert-mac.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">commit-revert-mac.png</span>
+                </a>
+            </td>
+            <td data-order="123523">120 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="commit-revert-win.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">commit-revert-win.png</span>
+                </a>
+            </td>
+            <td data-order="42672">41 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="commit-some.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">commit-some.png</span>
+                </a>
+            </td>
+            <td data-order="14177">13 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="create-branch-button-mac.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">create-branch-button-mac.png</span>
+                </a>
+            </td>
+            <td data-order="16599">16 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="create-branch-button-win.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">create-branch-button-win.png</span>
+                </a>
+            </td>
+            <td data-order="12996">12 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="create-branch-choose-branch-mac.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">create-branch-choose-branch-mac.png</span>
+                </a>
+            </td>
+            <td data-order="17339">16 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="create-branch-choose-branch-win.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">create-branch-choose-branch-win.png</span>
+                </a>
+            </td>
+            <td data-order="13567">13 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="create-branch-name-mac.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">create-branch-name-mac.png</span>
+                </a>
+            </td>
+            <td data-order="16693">16 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="create-branch-name-win.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">create-branch-name-win.png</span>
+                </a>
+            </td>
+            <td data-order="13072">12 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="create-issue-mac.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">create-issue-mac.png</span>
+                </a>
+            </td>
+            <td data-order="576796">563 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="create-issue-windows.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">create-issue-windows.png</span>
+                </a>
+            </td>
+            <td data-order="41642">40 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="create-new-issue.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">create-new-issue.png</span>
+                </a>
+            </td>
+            <td data-order="37809">36 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="create-pull-request.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">create-pull-request.png</span>
+                </a>
+            </td>
+            <td data-order="26433">25 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="current-branch-menu.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">current-branch-menu.png</span>
+                </a>
+            </td>
+            <td data-order="19560">19 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="delete-branch-mac.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">delete-branch-mac.png</span>
+                </a>
+            </td>
+            <td data-order="134381">131 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="delete-branch-win.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">delete-branch-win.png</span>
+                </a>
+            </td>
+            <td data-order="16042">15 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="delete-tag-multiple.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">delete-tag-multiple.png</span>
+                </a>
+            </td>
+            <td data-order="49170">48 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="desktop-menu-about-desktop-mac.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">desktop-menu-about-desktop-mac.png</span>
+                </a>
+            </td>
+            <td data-order="127657">124 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="diff-selection.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">diff-selection.png</span>
+                </a>
+            </td>
+            <td data-order="18859">18 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="discard-changes-confirm-mac.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">discard-changes-confirm-mac.png</span>
+                </a>
+            </td>
+            <td data-order="37814">36 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="discard-changes-mac.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">discard-changes-mac.png</span>
+                </a>
+            </td>
+            <td data-order="82524">80 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="discard-multiple-lines.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">discard-multiple-lines.png</span>
+                </a>
+            </td>
+            <td data-order="43611">42 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="discard-restore-stash-buttons.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">discard-restore-stash-buttons.png</span>
+                </a>
+            </td>
+            <td data-order="17914">17 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="discard-single-line.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">discard-single-line.png</span>
+                </a>
+            </td>
+            <td data-order="62049">60 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="download-for-mac.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">download-for-mac.png</span>
+                </a>
+            </td>
+            <td data-order="8650">8 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="download-for-windows.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">download-for-windows.png</span>
+                </a>
+            </td>
+            <td data-order="9123">8 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="enter-tag-name.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">enter-tag-name.png</span>
+                </a>
+            </td>
+            <td data-order="11793">11 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="expand-diff-view.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">expand-diff-view.png</span>
+                </a>
+            </td>
+            <td data-order="16209">15 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="fetch-button.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">fetch-button.png</span>
+                </a>
+            </td>
+            <td data-order="45720">44 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="fetch-newer-commits.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">fetch-newer-commits.png</span>
+                </a>
+            </td>
+            <td data-order="31316">30 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="force-push-origin.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">force-push-origin.png</span>
+                </a>
+            </td>
+            <td data-order="6156">6 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="gear-diff-select.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">gear-diff-select.png</span>
+                </a>
+            </td>
+            <td data-order="16507">16 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="help-about-desktop-win.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">help-about-desktop-win.png</span>
+                </a>
+            </td>
+            <td data-order="36794">35 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="history-tab-in-commit-sidebar.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">history-tab-in-commit-sidebar.png</span>
+                </a>
+            </td>
+            <td data-order="90168">88 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="lets-get-started.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">lets-get-started.png</span>
+                </a>
+            </td>
+            <td data-order="67627">66 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="mac-2fa-code-prompt.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">mac-2fa-code-prompt.png</span>
+                </a>
+            </td>
+            <td data-order="10837">10 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="mac-adjust-permissions.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">mac-adjust-permissions.png</span>
+                </a>
+            </td>
+            <td data-order="68655">67 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="mac-appearance-tab-themes.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">mac-appearance-tab-themes.png</span>
+                </a>
+            </td>
+            <td data-order="32107">31 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="mac-changed-file-header.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">mac-changed-file-header.png</span>
+                </a>
+            </td>
+            <td data-order="22764">22 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="mac-choose-preferences.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">mac-choose-preferences.png</span>
+                </a>
+            </td>
+            <td data-order="495907">484 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="mac-create-pull-request.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">mac-create-pull-request.png</span>
+                </a>
+            </td>
+            <td data-order="25912">25 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="mac-discard-stashed-changes-button.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">mac-discard-stashed-changes-button.png</span>
+                </a>
+            </td>
+            <td data-order="66732">65 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="mac-editor-menu.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">mac-editor-menu.png</span>
+                </a>
+            </td>
+            <td data-order="70634">68 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="mac-email-git-config.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">mac-email-git-config.png</span>
+                </a>
+            </td>
+            <td data-order="33036">32 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="mac-empty-trash-button.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">mac-empty-trash-button.png</span>
+                </a>
+            </td>
+            <td data-order="29485">28 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="mac-empty-trash-menu.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">mac-empty-trash-menu.png</span>
+                </a>
+            </td>
+            <td data-order="156276">152 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="mac-file-menu.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">mac-file-menu.png</span>
+                </a>
+            </td>
+            <td data-order="61425">59 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="mac-fork-behavior-menu-contribute.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">mac-fork-behavior-menu-contribute.png</span>
+                </a>
+            </td>
+            <td data-order="24582">24 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="mac-fork-behavior-save.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">mac-fork-behavior-save.png</span>
+                </a>
+            </td>
+            <td data-order="24953">24 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="mac-fork-options-prompt.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">mac-fork-options-prompt.png</span>
+                </a>
+            </td>
+            <td data-order="27658">27 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="mac-fork-own-purposes.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">mac-fork-own-purposes.png</span>
+                </a>
+            </td>
+            <td data-order="29191">28 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="mac-forking-continue.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">mac-forking-continue.png</span>
+                </a>
+            </td>
+            <td data-order="27550">26 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="mac-install-command-line-tool.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">mac-install-command-line-tool.png</span>
+                </a>
+            </td>
+            <td data-order="130596">127 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="mac-lock-keychain.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">mac-lock-keychain.png</span>
+                </a>
+            </td>
+            <td data-order="193691">189 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="mac-move-to-trash.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">mac-move-to-trash.png</span>
+                </a>
+            </td>
+            <td data-order="109879">107 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="mac-name-git-config.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">mac-name-git-config.png</span>
+                </a>
+            </td>
+            <td data-order="29970">29 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="mac-rebase-current-branch.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">mac-rebase-current-branch.png</span>
+                </a>
+            </td>
+            <td data-order="157476">153 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="mac-repository-settings.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">mac-repository-settings.png</span>
+                </a>
+            </td>
+            <td data-order="154526">150 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="mac-restore-stashed-changes-button.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">mac-restore-stashed-changes-button.png</span>
+                </a>
+            </td>
+            <td data-order="66599">65 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="mac-save-git-config.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">mac-save-git-config.png</span>
+                </a>
+            </td>
+            <td data-order="49493">48 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="mac-select-accounts-pane.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">mac-select-accounts-pane.png</span>
+                </a>
+            </td>
+            <td data-order="15053">14 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="mac-select-git-pane.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">mac-select-git-pane.png</span>
+                </a>
+            </td>
+            <td data-order="15650">15 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="mac-select-integrations-pane.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">mac-select-integrations-pane.png</span>
+                </a>
+            </td>
+            <td data-order="15122">14 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="mac-show-logs.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">mac-show-logs.png</span>
+                </a>
+            </td>
+            <td data-order="555419">542 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="mac-sign-in-button-enterprise.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">mac-sign-in-button-enterprise.png</span>
+                </a>
+            </td>
+            <td data-order="17458">17 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="mac-sign-in-github.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">mac-sign-in-github.png</span>
+                </a>
+            </td>
+            <td data-order="41666">40 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="mac-stash-all-changes.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">mac-stash-all-changes.png</span>
+                </a>
+            </td>
+            <td data-order="63200">61 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="mac-unlock-keychain.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">mac-unlock-keychain.png</span>
+                </a>
+            </td>
+            <td data-order="193266">188 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="mac-zipfile.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">mac-zipfile.png</span>
+                </a>
+            </td>
+            <td data-order="3366">3 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="merge-branch-button-list.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">merge-branch-button-list.png</span>
+                </a>
+            </td>
+            <td data-order="201905">197 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="merge-branch-button.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">merge-branch-button.png</span>
+                </a>
+            </td>
+            <td data-order="126103">123 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="new-branch-button-mac.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">new-branch-button-mac.png</span>
+                </a>
+            </td>
+            <td data-order="56443">55 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="new-branch-button-win.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">new-branch-button-win.png</span>
+                </a>
+            </td>
+            <td data-order="57972">56 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="open-in-desktop-button.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">open-in-desktop-button.png</span>
+                </a>
+            </td>
+            <td data-order="37575">36 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="open-pr-in-desktop-button.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">open-pr-in-desktop-button.png</span>
+                </a>
+            </td>
+            <td data-order="29809">29 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="open-pr-in-desktop.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">open-pr-in-desktop.png</span>
+                </a>
+            </td>
+            <td data-order="17942">17 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="partial-commit.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">partial-commit.png</span>
+                </a>
+            </td>
+            <td data-order="73916">72 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="protected-branch-warning.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">protected-branch-warning.png</span>
+                </a>
+            </td>
+            <td data-order="10562">10 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="publish-branch-button.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">publish-branch-button.png</span>
+                </a>
+            </td>
+            <td data-order="16354">15 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="publish-repository-dialog-button-mac.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">publish-repository-dialog-button-mac.png</span>
+                </a>
+            </td>
+            <td data-order="12243">11 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="publish-repository-dialog-button-win.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">publish-repository-dialog-button-win.png</span>
+                </a>
+            </td>
+            <td data-order="9820">9 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="publish-repository-name-mac.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">publish-repository-name-mac.png</span>
+                </a>
+            </td>
+            <td data-order="12447">12 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="publish-repository-name-win.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">publish-repository-name-win.png</span>
+                </a>
+            </td>
+            <td data-order="9685">9 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="publish-repository-org-dropdown-mac.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">publish-repository-org-dropdown-mac.png</span>
+                </a>
+            </td>
+            <td data-order="12230">11 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="publish-repository-org-dropdown-win.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">publish-repository-org-dropdown-win.png</span>
+                </a>
+            </td>
+            <td data-order="9776">9 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="publish-repository-private-checkbox-mac.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">publish-repository-private-checkbox-mac.png</span>
+                </a>
+            </td>
+            <td data-order="12351">12 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="publish-repository-private-checkbox-win.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">publish-repository-private-checkbox-win.png</span>
+                </a>
+            </td>
+            <td data-order="9826">9 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="publish-repository-toolbar-button.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">publish-repository-toolbar-button.png</span>
+                </a>
+            </td>
+            <td data-order="19625">19 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="pull-button.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">pull-button.png</span>
+                </a>
+            </td>
+            <td data-order="45140">44 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="pull-request-list-sync.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">pull-request-list-sync.png</span>
+                </a>
+            </td>
+            <td data-order="29752">29 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="push-origin-button.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">push-origin-button.png</span>
+                </a>
+            </td>
+            <td data-order="22694">22 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="repository-settings-mac.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">repository-settings-mac.png</span>
+                </a>
+            </td>
+            <td data-order="19427">18 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="repository-settings-remote-mac.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">repository-settings-remote-mac.png</span>
+                </a>
+            </td>
+            <td data-order="9413">9 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="repository-settings-remote-win.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">repository-settings-remote-win.png</span>
+                </a>
+            </td>
+            <td data-order="7802">7 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="repository-settings-save-mac.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">repository-settings-save-mac.png</span>
+                </a>
+            </td>
+            <td data-order="9323">9 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="repository-settings-save-win.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">repository-settings-save-win.png</span>
+                </a>
+            </td>
+            <td data-order="7715">7 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="repository-settings-win.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">repository-settings-win.png</span>
+                </a>
+            </td>
+            <td data-order="12587">12 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="select-branch-from-dropdown.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">select-branch-from-dropdown.png</span>
+                </a>
+            </td>
+            <td data-order="62385">60 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="select-create-tag.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">select-create-tag.png</span>
+                </a>
+            </td>
+            <td data-order="44504">43 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="select-delete-tag.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">select-delete-tag.png</span>
+                </a>
+            </td>
+            <td data-order="46477">45 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="select-multiple-files-discard.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">select-multiple-files-discard.png</span>
+                </a>
+            </td>
+            <td data-order="52775">51 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="sign-in-browser.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">sign-in-browser.png</span>
+                </a>
+            </td>
+            <td data-order="27389">26 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="sign-in-button-browser.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">sign-in-button-browser.png</span>
+                </a>
+            </td>
+            <td data-order="40141">39 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="sign-in-ghes.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">sign-in-ghes.png</span>
+                </a>
+            </td>
+            <td data-order="44639">43 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="start-rebase-button.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">start-rebase-button.png</span>
+                </a>
+            </td>
+            <td data-order="52089">50 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="stash-changes-options.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">stash-changes-options.png</span>
+                </a>
+            </td>
+            <td data-order="39017">38 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="stashed-changes.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">stashed-changes.png</span>
+                </a>
+            </td>
+            <td data-order="3408">3 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="viewing-tags-in-commit.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">viewing-tags-in-commit.png</span>
+                </a>
+            </td>
+            <td data-order="8928">8 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="viewing-tags-in-history.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">viewing-tags-in-history.png</span>
+                </a>
+            </td>
+            <td data-order="19235">18 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="windows-appearance-tab-themes.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">windows-appearance-tab-themes.png</span>
+                </a>
+            </td>
+            <td data-order="27386">26 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="windows-changed-file-header.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">windows-changed-file-header.png</span>
+                </a>
+            </td>
+            <td data-order="21127">20 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="windows-choose-options.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">windows-choose-options.png</span>
+                </a>
+            </td>
+            <td data-order="23214">22 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="windows-click-uninstall.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">windows-click-uninstall.png</span>
+                </a>
+            </td>
+            <td data-order="19262">18 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="windows-create-pull-request.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">windows-create-pull-request.png</span>
+                </a>
+            </td>
+            <td data-order="21259">20 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="windows-discard-stashed-changes-button.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">windows-discard-stashed-changes-button.png</span>
+                </a>
+            </td>
+            <td data-order="17629">17 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="windows-editor-menu.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">windows-editor-menu.png</span>
+                </a>
+            </td>
+            <td data-order="27649">27 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="windows-email-git-config.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">windows-email-git-config.png</span>
+                </a>
+            </td>
+            <td data-order="29040">28 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="windows-file-menu.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">windows-file-menu.png</span>
+                </a>
+            </td>
+            <td data-order="23267">22 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="windows-fork-behavior-menu-contribute.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">windows-fork-behavior-menu-contribute.png</span>
+                </a>
+            </td>
+            <td data-order="35147">34 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="windows-fork-behavior-save.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">windows-fork-behavior-save.png</span>
+                </a>
+            </td>
+            <td data-order="32326">31 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="windows-fork-options-prompt.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">windows-fork-options-prompt.png</span>
+                </a>
+            </td>
+            <td data-order="41737">40 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="windows-fork-own-purposes.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">windows-fork-own-purposes.png</span>
+                </a>
+            </td>
+            <td data-order="42219">41 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="windows-forking-continue.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">windows-forking-continue.png</span>
+                </a>
+            </td>
+            <td data-order="37838">36 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="windows-githubdesktopsetup.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">windows-githubdesktopsetup.png</span>
+                </a>
+            </td>
+            <td data-order="2900">2 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="windows-name-git-config.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">windows-name-git-config.png</span>
+                </a>
+            </td>
+            <td data-order="26419">25 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="windows-rebase-current-branch.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">windows-rebase-current-branch.png</span>
+                </a>
+            </td>
+            <td data-order="36791">35 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="windows-repository-settings.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">windows-repository-settings.png</span>
+                </a>
+            </td>
+            <td data-order="30264">29 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="windows-restore-stashed-changes-button.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">windows-restore-stashed-changes-button.png</span>
+                </a>
+            </td>
+            <td data-order="17363">16 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="windows-save-git-config.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">windows-save-git-config.png</span>
+                </a>
+            </td>
+            <td data-order="44482">43 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="windows-select-accounts-pane.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">windows-select-accounts-pane.png</span>
+                </a>
+            </td>
+            <td data-order="13282">12 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="windows-select-git-pane.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">windows-select-git-pane.png</span>
+                </a>
+            </td>
+            <td data-order="13221">12 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="windows-select-integrations-pane.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">windows-select-integrations-pane.png</span>
+                </a>
+            </td>
+            <td data-order="12404">12 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="windows-show-logs.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">windows-show-logs.png</span>
+                </a>
+            </td>
+            <td data-order="28943">28 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="windows-sign-in-button-enterprise.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">windows-sign-in-button-enterprise.png</span>
+                </a>
+            </td>
+            <td data-order="16046">15 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="windows-sign-in-github.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">windows-sign-in-github.png</span>
+                </a>
+            </td>
+            <td data-order="42703">41 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="windows-stash-all-changes.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">windows-stash-all-changes.png</span>
+                </a>
+            </td>
+            <td data-order="19997">19 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+        <tr class="file">
+            <td></td>
+            <td>
+                <a href="windows-uninstall-a-program.png">
+                    <svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file"></use></svg>
+                    <span class="name">windows-uninstall-a-program.png</span>
+                </a>
+            </td>
+            <td data-order="11213">10 KB</td>
+            <td class="hideable"><time datetime="2021-10-25T13:35:15">Mon Oct 25 13:35:15 2021</time></td>
+            <td class="hideable"></td>
+        </tr>
+
+            </tbody>
+        </table>
+    </div>
+</main>
+</body>
+</html>

@@ -31,7 +31,7 @@
     "gatsby-transformer-json": "2.3.4",
     "gatsby-transformer-sharp": "^2.3.0",
     "prismjs": "^1.17.1",
-    "qs": "^6.9.4",
+    "qs": "^6.9.7",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-helmet": "^5.2.1",
